@@ -13,9 +13,18 @@ generator client {
 }
 
 model Doctor {
-  id        Int    @id @default(autoincrement())
-  firstName String
-  lastName  String
-  specialty String
+  id          Int           @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  specialty   String
+  appointment Appointment[]
+}
 
+model Appointment {
+  id           Int      @id @default(autoincrement())
+  practiceName String
+  date         DateTime
+  reason       String
+  doctorId     Int
+  doctor       Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 }
