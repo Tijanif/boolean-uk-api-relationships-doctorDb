@@ -1,5 +1,8 @@
-const getAllDoctors = (req, res) => {
-  res.json({ msg: 'server is up' });
+const { doctor, appointment } = require('../../../utilities/dbClient');
+
+const getAllDoctors = async (req, res) => {
+  const allDoctors = await doctor.findMany();
+  res.json({ data: allDoctors });
 };
 
 module.exports = {
