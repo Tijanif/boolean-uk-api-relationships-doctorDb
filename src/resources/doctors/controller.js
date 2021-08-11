@@ -14,7 +14,19 @@ const getADoctorById = async (req, res) => {
   res.json({ data: foundDoctor });
 };
 
+const createADoctor = async (req, res) => {
+  const doctorData = req.body;
+  try {
+    const createdDoctor = await doctor.create({ data: doctorData });
+
+    res.json({ data: createdDoctor });
+  } catch (error) {
+    res.json({ error });
+  }
+};
+
 module.exports = {
   getAllDoctors,
   getADoctorById,
+  createADoctor,
 };
