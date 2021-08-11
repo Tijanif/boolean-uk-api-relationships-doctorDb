@@ -25,8 +25,15 @@ const createADoctor = async (req, res) => {
   }
 };
 
+const deleteADoctor = async (req, res) => {
+  const id = parseInt(req.params.id);
+  const deletedDoctor = await doctor.delete({ were: { id } });
+  res.json({ data: deletedDoctor });
+};
+
 module.exports = {
   getAllDoctors,
   getADoctorById,
   createADoctor,
+  deleteADoctor,
 };
